@@ -1,17 +1,38 @@
 export default function Routes(database){
+    async function verifyBrand(brandname){
+        //test again regex
+        if(validateBrand(brandname)){
+           //capitalize
+           return capitalizeBrand(brandname);
+        } else {
+            //invalid name
+        }
+    }
+
+    function validateBrand(brand){
+        let regex = /^[a-zA-Z\s]+$/;
+
+        return regex.test(brand);
+    }
+
+    function capitalizeBrand(brand){
+        let brandCapital = brand.toLowerCase();
+        return brandCapital[0].toUpperCase() + brandCapital.slice(1);
+    }
+
     async function listAllShoes(req, res){
         //call the database method that returns all the shoes
         let shoes = await database.getAllShoes();
-       //HTTP status - Ok
-        res.status(200);
+       
         //Send the returned information to the client via the Response object
         res.send(shoes);
     }
 
     async function listAllBrandShoes(req, res){
         //Get the shoe brand from the request
-        let brand = req.params.brandname;
-        
+        let brandname = req.params.brandname;
+        let brand = await verifyBrand(brandname);
+        console.log(brand);
         //Call the database method that returns all shoes for a specific brand
         let brandShoes = await database.getBrandShoes(brand);
         //Render a view to display all the shoes of the same brand
@@ -30,8 +51,9 @@ export default function Routes(database){
 
     async function shoesBrandAndSize(req, res){
         //Get the brand and size from the request object
-        let brand = req.params.brandname;
+        let brandname = req.params.brandname;
         let size = req.params.size;
+        let brand = await verifyBrand(brandname);
         
         //Call the database method that returns the shoes for a given brand and size
         let shoes = await database.getShoesSizeAndBrand(brand, size);
