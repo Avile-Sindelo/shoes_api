@@ -1,26 +1,42 @@
 export default function Routes(database){
     async function listAllShoes(req, res){
-        
         //call the database method that returns all the shoes
-        //render a view to show the shoes returned from the database
+        let shoes = await database.getAllShoes();
+       //HTTP status - Ok
+        res.status(200);
+        //Send the returned information to the client via the Response object
+        res.send(shoes);
     }
 
     async function listAllBrandShoes(req, res){
         //Get the shoe brand from the request
+        let brand = req.params.brandname;
+        
         //Call the database method that returns all shoes for a specific brand
+        let brandShoes = await database.getBrandShoes(brand);
         //Render a view to display all the shoes of the same brand
+        res.send(brandShoes);
     }
 
     async function listAllSizeShoes(req, res){
         //Get the shoes size from the request object
+        let size = req.params.size;
+        console.log(size);
         //Call the database method that returns all the shoes of the given size
+        let sizeShoes = await database.getShoesOfSize(size);
         //Render a view too display all the shoes of that given size 
+        res.send(sizeShoes);
     }
 
     async function shoesBrandAndSize(req, res){
         //Get the brand and size from the request object
+        let brand = req.params.brandname;
+        let size = req.params.size;
+        
         //Call the database method that returns the shoes for a given brand and size
+        let shoes = await database.getShoesSizeAndBrand(brand, size);
         //Render a view to display the shoes
+        res.send(shoes);
     }
 
     async function updateShoeStock(req, res){
