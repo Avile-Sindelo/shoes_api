@@ -19,10 +19,49 @@ export default function Database(db){
         return sizeAndBrand.length == 0 ? `No shoes were returned for ${brand} size ${size}` : sizeAndBrand;
     }
 
+    async function updateSoldShoe(id){
+        //get all the IDs of the shoes tables
+        //check if that list includes the parameter "id"
+            //if it does, check if the stock is more than zero 
+                //SQL update logic using the param id
+            //else
+                //return 
+
+        let shoesIDs = await db.many('SELECT id FROM shoes');
+        
+        shoesIDs.forEach(async (shoe)=>{
+            if(shoe.id == id){
+                console.log('FOund!!!');
+                //get the available stock to check if its not less than zero
+                let  shoeStock = await db.one('SELECT in_stock FROM shoes WHERE id=$1', [id]);
+                console.log('Shoe stock :', shoeStock.in_stock);
+                //make sure the stock is not less than zero
+                if(shoeStock.in_stock < 1){
+                    //Out of stock
+                    console.log('Out of stock');
+                    return 'Out of stock';
+                } else {
+                    //update logic goes here...
+                    console.log('Sell and update');
+                    await db.none(`UPDATE shoes 
+                                    SET in_stock = in_stock - 1
+                                    WHERE id=$1`, [id]);
+                    return 'Shoe stock updated successfully';
+                }
+            } else {
+                return 'No shoe with that ID was found';
+            }
+        });
+
+    }
+
+
+
     return{
         getAllShoes,
         getBrandShoes,
         getShoesOfSize,
-        getShoesSizeAndBrand
+        getShoesSizeAndBrand,
+        updateSoldShoe
     }
 }

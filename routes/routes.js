@@ -6,6 +6,7 @@ export default function Routes(database){
            return capitalizeBrand(brandname);
         } else {
             //invalid name
+            return "Invalid name";
         }
     }
 
@@ -32,9 +33,9 @@ export default function Routes(database){
         //Get the shoe brand from the request
         let brandname = req.params.brandname;
         let brand = await verifyBrand(brandname);
-        console.log(brand);
+      
         //Call the database method that returns all shoes for a specific brand
-        let brandShoes = await database.getBrandShoes(brand);
+        let brandShoes = brand == `Invalid name` ? brand : await database.getBrandShoes(brand);
         //Render a view to display all the shoes of the same brand
         res.send(brandShoes);
     }
@@ -63,16 +64,25 @@ export default function Routes(database){
 
     async function updateShoeStock(req, res){
         //Get the update information from the request - shoe id
+        let shoeId = req.params.id;
+        console.log(shoeId);
         //Call the database and update the "in-stock" value when a shoe is sold - decrement the stock
+        let updateResult = await database.updateSoldShoe(shoeId); 
+        console.log(updateResult)
         //Render a view that shows all the shoes  
+        res.send(updateResult);
     }
 
     async function addNewShoe(req, res){
         //Get the new shoe details from the request
+        console.log(req.body)
         //Validate the shoe details
         //Call the database and add the new shoe
+        //image handling
         //Render a view to display 
+        res.send("...Still working on it");
     }
+
 
     return{
         listAllShoes,
