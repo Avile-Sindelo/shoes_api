@@ -55,6 +55,11 @@ export default function Database(db){
 
     }
 
+    async function addShoeToStock(shoeDetails){
+        await db.none(`INSERT INTO shoes (brand, color, size, in_stock, price)
+                        VALUES ($1, $2, $3, $4, $5)`, [shoeDetails.brand, shoeDetails.color, shoeDetails.size, shoeDetails.stock, shoeDetails.price]);
+    }
+
 
 
     return{
@@ -62,6 +67,7 @@ export default function Database(db){
         getBrandShoes,
         getShoesOfSize,
         getShoesSizeAndBrand,
-        updateSoldShoe
+        updateSoldShoe,
+        addShoeToStock
     }
 }

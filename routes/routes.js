@@ -75,12 +75,65 @@ export default function Routes(database){
 
     async function addNewShoe(req, res){
         //Get the new shoe details from the request
-        console.log(req.body)
+        let brand = req.body.brandName;
+        let color = req.body.color;
+        let size = req.body.size;
+        let stock = req.body.stock;
+        let price = req.body.price;
+        
+        let shoeDetails = {
+            brand: brand,
+            color: color,
+            size: size,
+            stock: stock,
+            price: price
+        
+        }
+
         //Validate the shoe details
-        //Call the database and add the new shoe
-        //image handling
-        //Render a view to display 
-        res.send("...Still working on it");
+    
+        if(verifyShoeDetails(shoeDetails) == true){
+            
+            //Call the database and add the new shoe
+            await database.addShoeToStock(shoeDetails);
+            //image handling    
+            res.send(shoeDetails);
+        } else {
+            res.send(verifyShoeDetails(shoeDetails));
+        }
+
+        
+
+    }
+
+    function verifyShoeDetails(details){
+        //Regex to test the brand name and the shoe color
+        let stringRegex = /^[a-zA-Z ]+$/;
+        
+        //Another one for price
+        let priceRegex = /^\d+(\.\d{1,2})?$/;
+
+        if(!stringRegex.test(details.brand)){
+            return "Please make sure you enter a vaild Brand name";
+        }
+
+        if(!stringRegex.test(details.color)){
+            return "Please make sure you enter a valid shoe color";
+        }
+
+        if(!priceRegex.test(details.price)){
+            return "Please make sure you enter the correct price";
+        }
+
+        if(details.stock < 1){
+            return "Please make sure you add at least 1 shoe in the stock";
+        }
+
+        if(details.size < 1 || details.size > 15){
+            return "Please enter a valid shoe size";
+        }
+
+        return true;
     }
 
 

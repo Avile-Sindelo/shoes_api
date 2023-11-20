@@ -1,6 +1,4 @@
 import express from 'express';
-import axios from 'axios';
-import cors from 'cors';
 import bodyParser from 'body-parser';
 import pgp from "pg-promise";
 import { engine } from 'express-handlebars';
@@ -26,7 +24,7 @@ app.set('views', 'views');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cors());
+
 
 // Function to insert the image into the database
 async function insertImage() {
@@ -56,7 +54,7 @@ app.get('/', async function(req, res){
   // } catch (error) {
   //   console.error(error);
   // }
-  res.send('This is a message from the server');
+  res.render('updateShoe');
     
 }); 
 
