@@ -54,7 +54,10 @@ app.get('/', async function(req, res){
   // } catch (error) {
   //   console.error(error);
   // }
-  res.render('updateShoe');
+
+  let shoeResults = await database.getAllShoes();
+  
+  res.render('updateShoe', shoeResults);
     
 }); 
 

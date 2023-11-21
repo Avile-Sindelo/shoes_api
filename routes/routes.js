@@ -102,11 +102,11 @@ export default function Routes(database){
             res.send(verifyShoeDetails(shoeDetails));
         }
 
-        
-
     }
 
     function verifyShoeDetails(details){
+        //Make sure the input fields are not empty
+        // if()
         //Regex to test the brand name and the shoe color
         let stringRegex = /^[a-zA-Z ]+$/;
         

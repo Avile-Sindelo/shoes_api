@@ -1,3 +1,16 @@
+<form action="/api/shoes" method="GET">
+<h2>Form 1</h2>
+{{#each shoeResults}}
+<div id="each-shoe-div">
+    <p>Size : {{this.size}}</p>
+    <img src={{this.image_url}} alt="shoe image" width="200px" height="250px" />
+    <p>Price</p>
+</div>
+
+{{/each}}
+</form>
+
+
 <h3> Please enter the details of the new shoe</h3>
 <form action="/api/shoes" method="post">
     <input type="text" name="brandName" id="shoeBrand" placeholder="Brand Name">
@@ -8,3 +21,5 @@
 
     <button type="submit" id="submitBtn">Send</button>
 </form>
+
+
