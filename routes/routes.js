@@ -35,8 +35,6 @@ export default function Routes(database){
                 error: err.stack
             })
         }
-       
-        //Send the returned information to the client via the Response object
     
     }
 
@@ -97,6 +95,9 @@ export default function Routes(database){
             //Get the brand and size from the request object
             let brandname = req.params.brandname;
             let size = req.params.size;
+
+            cosole.log('Brand :', brandname)
+            cosole.log('Size :', size)
             let brand = await verifyBrand(brandname);
             
             //Call the database method that returns the shoes for a given brand and size

@@ -60,12 +60,40 @@ export default function Database(db){
                         VALUES ($1, $2, $3, $4, $5)`, [shoeDetails.brand, shoeDetails.color, shoeDetails.size, shoeDetails.stock, shoeDetails.price]);
     }
 
+    async function getAllBrandNames(){
+        let brands = await db.manyOrNone('SELECT brand FROM shoes');
+        //remove duplicates
+        let trimmedBrands = [];
+        brands.forEach((shoe)=>{
+            if(!trimmedBrands.includes(shoe.brand)){
+
+                trimmedBrands.push(shoe.brand);
+            }
+
+        })
+
+        return trimmedBrands;
+    }
+
+    async function getAllShoeSizes(){
+        let sizes = await db.manyOrNone('SELECT size FROM shoes');
+        let trimmedSize = [];
+        sizes.forEach((shoe)=>{
+            if(!trimmedSize.includes(shoe.size)){
+                trimmedSize.push(shoe.size)
+            }
+        });
+        return trimmedSize;
+    }
+
     return{
         getAllShoes,
         getBrandShoes,
         getShoesOfSize,
         getShoesSizeAndBrand,
         updateSoldShoe,
-        addShoeToStock
+        addShoeToStock,
+        getAllBrandNames,
+        getAllShoeSizes
     }
 } 

@@ -1,0 +1,10 @@
+#shoes-div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#each-shoe-div{
+    border: 1px solid gray;
+    width: fit-content;
+}
