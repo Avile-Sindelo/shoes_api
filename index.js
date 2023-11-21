@@ -57,7 +57,7 @@ app.get('/', async function(req, res){
 
   let shoeResults = await database.getAllShoes();
   
-  res.render('updateShoe', shoeResults);
+  res.render('updateShoe', {shoes: shoeResults});
     
 }); 
 
