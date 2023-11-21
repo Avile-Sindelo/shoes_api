@@ -6,7 +6,7 @@ export default function Routes(database){
            return capitalizeBrand(brandname);
         } else {
             //invalid name
-            return "Invalid name";
+            return "Invalid brand name";
         }
     }
 
@@ -47,12 +47,21 @@ export default function Routes(database){
             let brand = await verifyBrand(brandname);
           
             //Call the database method that returns all shoes for a specific brand
-            let brandShoes = brand == `Invalid name` ? brand : await database.getBrandShoes(brand);
-            //Render a view to display all the shoes of the same brand
-            res.json({
-                status: 'success',
-                data: brandShoes
-            });
+            // let brandShoes = brand == `Invalid brand name` ? brand : await database.getBrandShoes(brand);
+            if(brand == `Invalid brand name`){
+                res.json({
+                    status: 'error',
+                    error: brand
+                });
+            } else {
+                let brandShoes = await database.getBrandShoes(brand)
+                
+                //Render a view to display all the shoes of the same brand
+                res.json({
+                    status: 'success',
+                    data: brandShoes
+                });
+            }
 
         } catch(err){
             res.json({

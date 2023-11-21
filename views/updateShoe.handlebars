@@ -1,16 +1,16 @@
 <form action="/api/shoes" method="GET">
-<h2>Welcome's Loobz shoe catalogue</h2>
-{{#each shoes}}
-<div id="each-shoe-div">
-    <p>Brand : {{this.brand}}</p>
-    <p>Color : {{this.color}}</p>
-    <p>Size : {{this.size}}</p>
-    <p>Stock available : {{this.stock}}</p>
-    <p>Price : R{{this.price}}</p>
-    <img src={{this.image_url}} alt="shoe image" width="200px" height="250px" />
-</div>
+    <h2 id="welcome-heading">Welcome's Loobz shoe catalogue</h2>
+    {{#each shoes}}
+    <div id="each-shoe-div">
+        <p>Brand : {{this.brand}}</p>
+        <p>Color : {{this.color}}</p>
+        <p>Size : {{this.size}}</p>
+        <p>Stock available : {{this.in_stock}}</p>
+        <p>Price : R{{this.price}}</p>
+        <img src={{this.image_url}} alt="shoe image" width="300px" height="250px" />
+    </div>
 
-{{/each}}
+    {{/each}}
 </form>
 
 
