@@ -29,7 +29,7 @@
                 {{/each}}
             </select>
 
-            <button type="submit">Submit</button>
+            <button type="submit" disabled>Submit</button>
         </div>
     </form>
 
@@ -37,11 +37,11 @@
         {{#each shoes}}
         <div id="each-shoe-div">
             <img src={{this.image_url}} alt="shoe image" width="300px" height="250px" />
-            <p>Brand : {{this.brand}}</p>
-            <p>Color : {{this.color}}</p>
-            <p>Size : {{this.size}}</p>
-            <p>Stock available : {{this.in_stock}}</p>
-            <p>Price : R{{this.price}}</p>
+            <p class="shoe-detail">Brand : {{this.brand}}</p>
+            <p class="shoe-detail">Color : {{this.color}}</p>
+            <p class="shoe-detail">Size : {{this.size}}</p>
+            <p class="shoe-detail">Stock available : {{this.in_stock}}</p>
+            <p class="shoe-detail">Price : R{{this.price}}</p>
         </div>
         {{/each}}
     </div>

@@ -1,3 +1,7 @@
+#welcome-heading{
+    text-align: center;
+}
+
 #shoes-div{
     display: flex;
     flex-direction: row;
@@ -7,4 +11,17 @@
 #each-shoe-div{
     border: 1px solid gray;
     width: fit-content;
+    margin: .5px;
+    border-radius: 5px;
+}
+
+#filter-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em 0;
+}
+
+.shoe-detail{
+    padding: 0 2em;
 }
