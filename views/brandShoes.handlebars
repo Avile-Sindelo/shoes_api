@@ -1,0 +1,21 @@
+<form action="/api/shoes/brand/{{brand}}" method="get">
+        <div id="filter-div">
+            <label for="brand">Brand</label>
+            <select>
+                <option disabled selected >Select a brand</option>
+            {{#each brands}}
+                <option value={{this}}>{{this}}</option>  
+            {{/each}}
+            </select>
+
+            {{!-- <label for="size">Size</label>
+            <select>
+                <option selected disabled>Choose a shoe size</option>
+                {{#each size}}
+                <option value={{this}}>{{this}}</option>
+                {{/each}}
+            </select> --}}
+
+            <button type="submit">Submit</button>
+        </div>
+    </form>

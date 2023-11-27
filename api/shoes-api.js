@@ -1,4 +1,4 @@
-export default function Routes(database){
+export default function (shoesService){
     async function verifyBrand(brandname){
         //test again regex
         if(validateBrand(brandname)){
@@ -24,7 +24,7 @@ export default function Routes(database){
     async function listAllShoes(req, res){
         try{
             //call the database method that returns all the shoes
-            let shoes = await database.getAllShoes();
+            let shoes = await shoesService.getAllShoes();
             res.json({
                 status: 'success',
                 data: shoes
@@ -52,7 +52,7 @@ export default function Routes(database){
                     error: brand
                 });
             } else {
-                let brandShoes = await database.getBrandShoes(brand)
+                let brandShoes = await shoesService.getBrandShoes(brand)
                 
                 //Render a view to display all the shoes of the same brand
                 res.json({
@@ -75,7 +75,7 @@ export default function Routes(database){
             let size = req.params.size;
             console.log(size);
             //Call the database method that returns all the shoes of the given size
-            let sizeShoes = await database.getShoesOfSize(size);
+            let sizeShoes = await shoesService.getShoesOfSize(size);
             //Render a view too display all the shoes of that given size 
             res.json({
                 status: 'success',
@@ -101,7 +101,7 @@ export default function Routes(database){
             let brand = await verifyBrand(brandname);
             
             //Call the database method that returns the shoes for a given brand and size
-            let shoes = await database.getShoesSizeAndBrand(brand, size);
+            let shoes = await shoesService.getShoesSizeAndBrand(brand, size);
             //Render a view to display the shoes
             res.json({
                 status: 'success',
@@ -122,7 +122,7 @@ export default function Routes(database){
         let shoeId = req.params.id;
         console.log(shoeId);
         //Call the database and update the "in-stock" value when a shoe is sold - decrement the stock
-        let updateResult = await database.updateSoldShoe(shoeId); 
+        let updateResult = await shoesService.updateSoldShoe(shoeId); 
         console.log(updateResult)
         //Render a view that shows all the shoes  
         res.json({
@@ -162,7 +162,7 @@ export default function Routes(database){
             if(verifyShoeDetails(shoeDetails) == true){
                 
                 //Call the database and add the new shoe
-                await database.addShoeToStock(shoeDetails);
+                await shoesService.addShoeToStock(shoeDetails);
                 //image handling    
                 res.send(shoeDetails);
             } else {
@@ -216,6 +216,7 @@ export default function Routes(database){
         listAllSizeShoes,
         shoesBrandAndSize,
         updateShoeStock,
-        addNewShoe
+        addNewShoe,
+        verifyBrand
     }
 }

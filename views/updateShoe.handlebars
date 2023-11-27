@@ -5,38 +5,17 @@
         <label for="brandOnly">Brand Only</label>
         <select>
             <option selected disabled>Choose a brand</option>
-            {{#each brand}}
+            {{#each brands}}
             <option name={{this}} value={{this}}>{{this}}</option>
             {{/each}}
         <button type="submit">Submit Brand</button>
     </form> --}}
 
-    <form action="/api/shoes/brand/:brandname/size/:size" method="get">
-        <div id="filter-div">
-            <label for="brand">Brand</label>
-            <select>
-                <option disabled selected >Select a brand</option>
-            {{#each brand}}
-                <option value={{this}}>{{this}}</option>  
-            {{/each}}
-            </select>
-
-            <label for="size">Size</label>
-            <select>
-                <option selected disabled>Choose a shoe size</option>
-                {{#each size}}
-                <option value={{this}}>{{this}}</option>
-                {{/each}}
-            </select>
-
-            <button type="submit" disabled>Submit</button>
-        </div>
-    </form>
-
+    
     <div id="shoes-div">
         {{#each shoes}}
         <div id="each-shoe-div">
-            <img src={{this.image_url}} alt="shoe image" width="300px" height="250px" />
+            <img src={{this.image_url}} alt="shoe image" width="290px" height="250px" />
             <p class="shoe-detail">Brand : {{this.brand}}</p>
             <p class="shoe-detail">Color : {{this.color}}</p>
             <p class="shoe-detail">Size : {{this.size}}</p>
@@ -48,15 +27,20 @@
 </form>
 
 
-<h3> Please enter the details of the new shoe</h3>
-<form action="/api/shoes" method="post">
-    <input type="text" name="brandName" id="shoeBrand" placeholder="Brand Name">
-    <input type="text" name="color" id="shoeColor" placeholder="Colour">
-    <input type="number" name="size" id="shoeSize" placeholder="Size">
-    <input type="number" name="stock" id="stock" placeholder="Stock available">
-    <input type="text" name="price" id="shoePrice" placeholder="Price">
-
-    <button type="submit" id="submitBtn">Send</button>
-</form>
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+    {{!-- axios.get('https://shoes-api-chdd.onrender.com/api/shoes')
+         .then(function (response) {
+             // handle success
+             console.log(response);
+            })
+        .catch(function (error) {
+         // handle error
+        console.log(error);
+    }); --}}
+
+</script>
