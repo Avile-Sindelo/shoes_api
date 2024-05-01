@@ -44,6 +44,8 @@
     margin: .1em;
     border: none;
     border-bottom-left-radius: 5px;
+    font-family: 'Poppins';
+    font-weight: 700;
 }
 
 .add-to-cart:hover{
@@ -52,6 +54,14 @@
     color: #333;
 }
 
+.image{
+    width: 290px;
+    height: 250px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
 .image:hover{
+    cursor: pointer;
     transform: scale(1.01);
 }
