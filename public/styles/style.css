@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alegreya+Sans+SC&family=Caveat&family=Comfortaa:wght@300&family=Exo+2:wght@200&family=Gruppo&family=Handjet&family=Inconsolata:wght@500&family=Jersey+25&family=Merienda&family=Miltonian+Tattoo&family=Montserrat:ital@1&family=Playfair+Display&family=Poppins:wght@200&family=Protest+Revolution&family=Rubik+Glitch+Pop&family=Ultra&display=swap');
+
 #welcome-heading{
     text-align: center;
+    font-family: 'Miltonian Tattoo';
 }
 
 #shoes-div{
@@ -8,10 +11,10 @@
     flex-wrap: wrap;
 }
 
-#each-shoe-div{
-    border: 1px solid gray;
+.each-shoe-div{
+    border: 1px solid olivedrab;
     width: fit-content;
-    margin: .5px;
+    margin: .5em;
     border-radius: 5px;
 }
 
@@ -23,5 +26,32 @@
 }
 
 .shoe-detail{
+    font-family: 'Comfortaa';
+    font-style: normal;
     padding: 0 2em;
+    font-weight: 600;
+    text-shadow: .5px .5px darkgoldenrod;
+}
+
+.shoe-data{
+    color: lightseagreen;
+}
+
+.add-to-cart{
+    background-color: #333;
+    color: beige;
+    padding: .5em 1em;
+    margin: .1em;
+    border: none;
+    border-bottom-left-radius: 5px;
+}
+
+.add-to-cart:hover{
+    cursor: pointer;
+    background-color: lightblue;
+    color: #333;
+}
+
+.image:hover{
+    transform: scale(1.01);
 }

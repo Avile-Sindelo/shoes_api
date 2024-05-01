@@ -57,7 +57,7 @@ export default function ShoesService(db){
 
     async function addShoeToStock(shoeDetails){
         await db.none(`INSERT INTO shoes (brand, color, size, in_stock, price, image_url)
-                        VALUES ($1, $2, $3, $4, $5)`, [shoeDetails.brand, shoeDetails.color, shoeDetails.size, shoeDetails.stock, shoeDetails.price]);
+                        VALUES ($1, $2, $3, $4, $5, $6)`, [shoeDetails.brand, shoeDetails.color, shoeDetails.size, shoeDetails.stock, shoeDetails.price, shoeDetails.image]);
     }
 
     async function getAllBrandNames(){

@@ -1,46 +1,31 @@
-<form action="/api/shoes" method="GET">
-    <h2 id="welcome-heading">Welcome's Loobz shoe catalogue</h2>
-    
-    {{!-- <form action="/api/shoes/brand/{{brand}}" method="get">
-        <label for="brandOnly">Brand Only</label>
-        <select>
-            <option selected disabled>Choose a brand</option>
-            {{#each brands}}
-            <option name={{this}} value={{this}}>{{this}}</option>
-            {{/each}}
-        <button type="submit">Submit Brand</button>
-    </form> --}}
+{{!-- <form action="/api/shoes/brand/{{brand}}" method="get">
+    <label for="brandOnly">Brand Only</label>
+    <select name="brandname">
+        <option selected disabled>Choose a brand</option>
+        {{#each brands}}
+        <option value={{this}}>{{this}}</option>
+        {{/each}}
+    <button type="submit">Submit Brand</button>
+</form> --}}
 
-    
+<form action="/api/shoes" method="GET">
+    <h2 id="welcome-heading">Welcome to iNkwenkwezi shoe catalogue</h2>
+
     <div id="shoes-div">
         {{#each shoes}}
-        <div id="each-shoe-div">
-            <img src={{this.image_url}} alt="shoe image" width="290px" height="250px" />
-            <p class="shoe-detail">Brand : {{this.brand}}</p>
-            <p class="shoe-detail">Color : {{this.color}}</p>
-            <p class="shoe-detail">Size : {{this.size}}</p>
-            <p class="shoe-detail">Stock available : {{this.in_stock}}</p>
-            <p class="shoe-detail">Price : R{{this.price}}</p>
+        <div class="each-shoe-div">
+            <img src={{this.image_url}} class="image" alt="shoe image" width="290px" height="250px" />
+            <p class="shoe-detail">Brand : <span class="shoe-data">{{this.brand}}</span></p>
+            <p class="shoe-detail">Color : <span class="shoe-data">{{this.color}}</span></p>
+            <p class="shoe-detail">Size : <span class="shoe-data">{{this.size}}</span></p>
+            <p class="shoe-detail">Stock available : <span class="shoe-data">{{this.in_stock}}</span></p>
+            <p class="shoe-detail">Price : <span class="shoe-data">R{{this.price}}</span> </p>
+            <button class="add-to-cart"> Add to Cart</button>
         </div>
         {{/each}}
     </div>
 </form>
 
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 <script type="text/javascript">
-
-    {{!-- axios.get('https://shoes-api-chdd.onrender.com/api/shoes')
-         .then(function (response) {
-             // handle success
-             console.log(response);
-            })
-        .catch(function (error) {
-         // handle error
-        console.log(error);
-    }); --}}
-
 </script>

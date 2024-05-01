@@ -1,6 +1,6 @@
 export default function (shoesService){
     async function verifyBrand(brandname){
-        //test again regex
+        //test against regex
         if(validateBrand(brandname)){
            //capitalize
            return capitalizeBrand(brandname);
@@ -120,7 +120,7 @@ export default function (shoesService){
         try{
         //Get the update information from the request - shoe id
         let shoeId = req.params.id;
-        console.log(shoeId);
+        console.log('Shoe ID : ', shoeId);
         //Call the database and update the "in-stock" value when a shoe is sold - decrement the stock
         let updateResult = await shoesService.updateSoldShoe(shoeId); 
         console.log(updateResult)
@@ -142,18 +142,14 @@ export default function (shoesService){
         try{
         
             //Get the new shoe details from the request
-            let brand = req.body.brandName;
-            let color = req.body.color;
-            let size = req.body.size;
-            let stock = req.body.stock;
-            let price = req.body.price;
-            
+    
             let shoeDetails = {
-                brand: brand,
-                color: color,
-                size: size,
-                stock: stock,
-                price: price
+                brand: req.body.brandName,
+                color: req.body.color,
+                size: req.body.size,
+                stock: req.body.stock,
+                price: req.body.price,
+                image: req.body.image
             
             }
 
@@ -217,6 +213,7 @@ export default function (shoesService){
         shoesBrandAndSize,
         updateShoeStock,
         addNewShoe,
-        verifyBrand
+        verifyBrand,
+        verifyShoeDetails
     }
 }

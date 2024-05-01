@@ -41,10 +41,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
-
-app.get('/', shoesRoutes.showAll); 
+// app.get('/', shoesRoutes.showAll); 
 
 app.get('/api/shoes', shoesRoutes.showAll); //List all shoes in stock
 app.get('/api/shoes/brand/:brandname', shoesRoutes.showBrandShoes); //list all shoes for a specific brand
