@@ -79,6 +79,7 @@
     margin: 0 2em;
     font-size: 150%;
     color: dodgerblue;
+    transform: translateY(28px);
 }
 
 #cart-icon{
