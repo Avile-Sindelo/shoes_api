@@ -2,7 +2,12 @@
 
 #welcome-heading{
     text-align: center;
-    font-family: 'Miltonian Tattoo';
+    font-family: 'Miltonian Tattoo', sans-serif;
+    text-align: center;
+    color: #3B3C36;
+    text-wrap: wrap;
+    letter-spacing: 1px;
+    text-shadow: .5px .5px 2px #FF2400;
 }
 
 #shoes-div{
@@ -16,6 +21,7 @@
     width: fit-content;
     margin: .5em;
     border-radius: 5px;
+    box-shadow: .5px 5px 20px #3B3C36;
 }
 
 #filter-div{
@@ -41,17 +47,17 @@
     background-color: #333;
     color: beige;
     padding: .5em 1em;
-    margin: .1em;
+    margin: .1em .15em;
     border: none;
     border-bottom-left-radius: 5px;
-    font-family: 'Poppins';
-    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
 }
 
 .add-to-cart:hover{
     cursor: pointer;
     background-color: lightblue;
-    color: #333;
+    color: darkcyan;
 }
 
 .image{
@@ -64,4 +70,25 @@
 .image:hover{
     cursor: pointer;
     transform: scale(1.01);
+}
+
+#likes-div{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin: 0 2em;
+    font-size: 150%;
+    color: dodgerblue;
+}
+
+@media screen AND (max-width: 630px){
+    
+    #shoes-form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-wrap: wrap;
+    }
+
 }

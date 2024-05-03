@@ -8,7 +8,7 @@
     <button type="submit">Submit Brand</button>
 </form> --}}
 
-<form action="/api/shoes" method="GET">
+<form action="/api/shoes" method="GET" id="shoes-form">
     <h2 id="welcome-heading">Welcome to iNkwenkwezi shoe catalogue</h2>
 
     <div id="shoes-div">
@@ -20,6 +20,9 @@
             <p class="shoe-detail">Size : <span class="shoe-data">{{this.size}}</span></p>
             <p class="shoe-detail">Stock available : <span class="shoe-data">{{this.in_stock}}</span></p>
             <p class="shoe-detail">Price : <span class="shoe-data">R{{this.price}}</span> </p>
+            <div id="likes-div">
+                <span class="fa-regular fa-thumbs-up"></span>
+            </div>
             <button class="add-to-cart"> Add to Cart</button>
         </div>
         {{/each}}
