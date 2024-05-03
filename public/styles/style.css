@@ -81,9 +81,14 @@
     color: dodgerblue;
 }
 
-@media screen AND (max-width: 630px){
+#cart-icon{
+    font-size: 150%;
+    margin: 0 .7em;
+}
+
+@media screen AND (max-width: 631px){
     
-    #shoes-form{
+    #shoes-div{
         display: flex;
         align-items: center;
         justify-content: center;
