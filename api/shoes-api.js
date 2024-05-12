@@ -41,7 +41,7 @@ export default function (shoesService){
     async function listAllBrandShoes(req, res){
         try{
             //Get the shoe brand from the request
-            let brandname = req.params.brandname;
+            let brandname = req.body.brandname;
             let brand = await verifyBrand(brandname);
           
             //Call the database method that returns all shoes for a specific brand

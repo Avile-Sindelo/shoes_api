@@ -1,15 +1,31 @@
-{{!-- <form action="/api/shoes/brand/{{brand}}" method="get">
+<h2 id="welcome-heading">Welcome to iNkwenkwezi shoe catalogue</h2>
+
+{{!-- Brand_Only form --}}
+<form action="/api/shoes/brand/" method="GET">
     <label for="brandOnly">Brand Only</label>
     <select name="brandname">
         <option selected disabled>Choose a brand</option>
+        <option value="All" id="all-option">All</option>
         {{#each brands}}
         <option value={{this}}>{{this}}</option>
         {{/each}}
+    </select>
     <button type="submit">Submit Brand</button>
-</form> --}}
+</form>
+
+{{!-- Size_Only form --}}
+<form action="/api/shoes/size/" method="GET">
+    <label for="sizeOnly">Size Only</label>
+    <select name="size">
+        <option selected disabled>Choose a size</option>
+        {{#each sizes}}
+        <option value={{this}}>{{this}}</option>
+        {{/each}}
+    </select>
+    <button type="submit">Submit Size</button>
+</form>
 
 <form action="/api/shoes" method="GET" id="shoes-form">
-    <h2 id="welcome-heading">Welcome to iNkwenkwezi shoe catalogue</h2>
 
     <div id="shoes-div">
         {{#each shoes}}

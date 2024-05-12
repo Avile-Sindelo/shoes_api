@@ -44,8 +44,8 @@ app.use(bodyParser.json());
 // app.get('/', shoesRoutes.showAll); 
 
 app.get('/api/shoes', shoesRoutes.showAll); //List all shoes in stock
-app.get('/api/shoes/brand/:brandname', shoesRoutes.showBrandShoes); //list all shoes for a specific brand
-app.get('/api/shoes/size/:size', shoesRoutes.showSizeShoes); //List all shoes for a given size
+app.get('/api/shoes/brand/', shoesRoutes.showBrandShoes); //list all shoes for a specific brand
+app.get('/api/shoes/size/', shoesRoutes.showSizeShoes); //List all shoes for a given size
 app.get('/api/shoes/brand/:brandname/size/:size', shoesRoutes.showBrandAndSize); //List all shoes for a given brand and size
 app.post('/api/shoes/sold/:id', shoesRoutes.sellShoe); //Update the stock levels when a shoe is sold
 // app.post('/api/shoes', shoesRoutes.addNewShoe); //Add a new shoe to his stock

@@ -6,27 +6,25 @@ export default function shoeRoutes(shoesService, shoesAPI){
             let shoeResults = await shoesService.getAllShoes();
             let shoeBrands = await shoesService.getAllBrandNames();
             let shoeSizes = await shoesService.getAllShoeSizes();
-            console.log(shoeResults);
-            console.log(shoeBrands);
-            console.log(shoeSizes);
-          
-            res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, size: shoeSizes});
+            
+            res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes});
         } catch(err){
             console.error(err);
         }
     }
-
+    
     async function showBrandShoes(req, res){
         try{
-            let brand = req.params.brandname;
-            console.log('Brand: ', brand);
+            let brand = req.query.brandname;
             let verified = await shoesAPI.verifyBrand(brand);
             let results = await shoesService.getBrandShoes(verified);
-            console.log('Results: ', results);
+            let brands = await shoesService.getAllBrandNames();
+            let sizes = await shoesService.getAllShoeSizes();
+            // console.log('Results: ', results);
             if(results == `No shoes were returned for the brand ${verified}`){
                 res.redirect('/api/shoes');
             } else {
-                res.render('updateShoe', {shoes: results})
+                res.render('updateShoe', {shoes: results, brands, sizes})
             }
             
         } catch(err){
@@ -37,12 +35,14 @@ export default function shoeRoutes(shoesService, shoesAPI){
     async function showSizeShoes(req, res){
         try{
 
-            let size = req.params.size;
+            let size = req.query.size;
             let sizeResults = await shoesService.getShoesOfSize(size);
+            let sizes = await shoesService.getAllShoeSizes();
+            let brands = await shoesService.getAllBrandNames();
             if(sizeResults == `No shoes were returned for size ${size}`){
                 res.redirect('/api/shoes');
             } else {
-                res.render('updateShoe', {shoes: sizeResults})
+                res.render('updateShoe', {shoes: sizeResults, sizes, brands})
             }
 
         } catch(err){
