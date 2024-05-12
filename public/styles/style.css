@@ -87,6 +87,11 @@
     margin: 0 .7em;
 }
 
+.filters{
+    display: flex;
+    flex-direction: row;
+}
+
 @media screen AND (max-width: 631px){
     
     #shoes-div{

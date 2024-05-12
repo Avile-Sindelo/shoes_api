@@ -52,12 +52,14 @@ export default function shoeRoutes(shoesService, shoesAPI){
 
     async function showBrandAndSize(req, res){
         try{
-            let brand = req.params.brandname;
-            let size = req.params.size;
+            let brand = req.query.brand_name;
+            let size = req.query.size;
             let verified = await shoesAPI.verifyBrand(brand);
+            let sizes = await shoesService.getAllShoeSizes();
+            let brands = await shoesService.getAllBrandNames();
     
             let results = await shoesService.getShoesSizeAndBrand(verified, size); 
-            res.render('updateShoe', {shoes: results});
+            res.render('updateShoe', {shoes: results, sizes, brands});
 
         } catch(err){
             console.error(err);
