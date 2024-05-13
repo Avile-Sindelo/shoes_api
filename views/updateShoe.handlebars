@@ -3,51 +3,53 @@
 <div class="filters">
     {{!-- Brand_Only form --}}
     <form action="/api/shoes/brand/" method="GET">
-        <label for="brandOnly">Brand Only</label>
-        <select name="brandname">
-            <option selected disabled>Choose a brand</option>
-            <option value="All" id="all-option">All</option>
+        <label for="brandOnly" class="filter-label">Brand Only</label>
+        <select name="brandname" class="filter-select">
+            <option selected disabled class="filter-option">Choose a brand</option>
+            <option value="All" id="all-option" class="filter-option">All</option>
             {{#each brands}}
-            <option value={{this}}>{{this}}</option>
+            <option value={{this}} class="filter-option">{{this}}</option>
             {{/each}}
         </select>
-        <button type="submit">Submit Brand</button>
+        <button type="submit" class="submit_btn">Submit Brand</button>
     </form>
 
     {{!-- Size_Only form --}}
     <form action="/api/shoes/size/" method="GET">
-        <label for="sizeOnly">Size Only</label>
-        <select name="size">
-            <option selected disabled>Choose a size</option>
+        <label for="sizeOnly" class="filter-label">Size Only</label>
+        <select name="size" class="filter-select">
+            <option selected disabled class="filter-option">Choose a size</option>
             {{#each sizes}}
-            <option value={{this}}>{{this}}</option>
+            <option value={{this}} class="filter-option">{{this}}</option>
             {{/each}}
         </select>
-        <button type="submit">Submit Size</button>
+        <button type="submit" class="submit_btn">Submit Size</button>
     </form>
 
-    {{!-- Brand_and_Size form --}}
-    <form action="/api/shoes/brand/size" method="GET">
-    {{!-- Brand  --}}
-        <label for="brand">Brand</label>
-        <select name="brand_name">
-            <option selected disabled>Choose a brand</option>
-            {{#each brands}}
-            <option value="{{this}}">{{this}}</option> 
-            {{/each}}
-        </select>
+    <div id="brand_and_size_div">
+        {{!-- Brand_and_Size form --}}
+        <form action="/api/shoes/brand/size" method="GET">
+        {{!-- Brand  --}}
+            <label for="brand" class="filter-label">Brand</label>
+            <select name="brand_name" class="filter-select">
+                <option selected disabled class="filter-option">Choose a brand</option>
+                {{#each brands}}
+                <option value="{{this}}" class="filter-option">{{this}}</option> 
+                {{/each}}
+            </select>
 
-        {{!-- Size  --}}
-        <label for="size">Size</label>
-        <select name="size">
-            <option selected disabled>Choose a size</option>
-            {{#each sizes}}
-            <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
+            {{!-- Size  --}}
+            <label for="size" class="filter-label">Size</label>
+            <select name="size" class="filter-select">
+                <option selected disabled class="filter-option">Choose a size</option>
+                {{#each sizes}}
+                <option value="{{this}}" class="filter-option">{{this}}</option>
+                {{/each}}
+            </select>
 
-        <button type="submit">Submit both</button>
-    </form>
+            <button type="submit" class="submit_btn">Submit both</button>
+        </form>
+    </div>
 
 </div>
 

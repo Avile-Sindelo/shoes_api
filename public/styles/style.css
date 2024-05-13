@@ -92,6 +92,60 @@
     flex-direction: row;
 }
 
+.filter-label{
+    font-family: 'Gruppo', sans-serif;
+    font-weight: bolder;
+    color:rebeccapurple;
+    padding: 0 .3em;
+}
+
+.filter-select{
+    padding: .3em .5em;
+    margin: .1em .2em;
+    border-radius: 5px;
+    font-family: 'Gruppo', sans-serif;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    background-color: lightyellow;
+    color: rebeccapurple;
+}
+
+.filter-select:hover{
+    background-color: darkslategray;
+    color: beige;
+}
+
+.filter-option{
+    color: darkseagreen;
+    font-weight: bolder;
+}
+
+#brand_and_size_div{
+    margin: 0 0 0 17em;
+}
+
+.submit_btn{
+    border-radius: 4px;
+    border: none;
+    margin: 0 .5em;
+    padding: .4em .6em;
+    background-color: darkslategray;
+    color: navajowhite;
+    letter-spacing: .3px;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: 2px 2px 5px lightslategray;
+}
+
+.submit_btn:hover{
+    background-color: green;
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: .5s ease;
+    border: 1.5px dashed #fff;
+    border-radius: 7px;
+    color: beige;
+}
+
 @media screen AND (max-width: 631px){
     
     #shoes-div{
@@ -100,6 +154,10 @@
         justify-content: center;
         flex-direction: column;
         text-wrap: wrap;
+    }
+
+    #brand_and_size_div{
+        margin: 0;
     }
 
 }
