@@ -160,4 +160,8 @@
         margin: 0;
     }
 
+    .submit_btn{
+        margin: .6em .3em;
+    }
+
 }
