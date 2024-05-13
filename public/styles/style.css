@@ -161,7 +161,19 @@
     }
 
     .submit_btn{
-        margin: .6em .3em;
+        margin: .6em .7em;
     }
 
+    .filters{
+        flex-wrap: wrap;
+        margin: 0 0 0 3.5em;
+    }
+
+    .filter-label{
+        margin: 0 0 0 2em;
+    }
+
+    .filter-select{
+        margin: .8em .6em;
+    }
 }
