@@ -20,12 +20,11 @@ export default function ShoesService(db){
     }
 
     async function updateSoldShoe(id){
-        //get all the IDs of the shoes tables
-        //check if that list includes the parameter "id"
-            //if it does, check if the stock is more than zero 
-                //SQL update logic using the param id
+        //Retrieve the shoe whose ID is the passed parameter
+            //if "in_stock" of the shoe is greater than 0
+                //Decrement the "in_stock" value for the shoe retrieved
             //else
-                //return 
+                //return "Out of stock" message 
 
         let shoesIDs = await db.many('SELECT id FROM shoes');
         
