@@ -21,36 +21,46 @@ export default function ShoesService(db){
 
     async function updateSoldShoe(id){
         //Retrieve the shoe whose ID is the passed parameter
+        let soldShoe = await db.one('SELECT * FROM shoes WHERE id=$1', [id]);
             //if "in_stock" of the shoe is greater than 0
-                //Decrement the "in_stock" value for the shoe retrieved
-            //else
-                //return "Out of stock" message 
-
-        let shoesIDs = await db.many('SELECT id FROM shoes');
-        
-        shoesIDs.forEach(async (shoe)=>{
-            if(shoe.id == id){
-                console.log('FOund!!!');
-                //get the available stock to check if its not less than zero
-                let  shoeStock = await db.one('SELECT in_stock FROM shoes WHERE id=$1', [id]);
-                console.log('Shoe stock :', shoeStock.in_stock);
-                //make sure the stock is not less than zero
-                if(shoeStock.in_stock < 1){
-                    //Out of stock
-                    console.log('Out of stock');
-                    return 'Out of stock';
-                } else {
-                    //update logic goes here...
-                    console.log('Sell and update');
-                    await db.none(`UPDATE shoes 
+                if(soldShoe.in_stock > 0){
+                    //Decrement the "in_stock" value for the shoe retrieved
+                   await db.none(`UPDATE shoes
                                     SET in_stock = in_stock - 1
                                     WHERE id=$1`, [id]);
-                    return 'Shoe stock updated successfully';
+
+                    return 'Stock updated successfully!';
                 }
-            } else {
-                return 'No shoe with that ID was found';
-            }
-        });
+            //else
+                else{
+                    return 'Out of stock!!!';
+                }
+                //return "Out of stock" message 
+
+        
+        // shoesIDs.forEach(async (shoe)=>{
+        //     if(shoe.id == id){
+        //         console.log('FOund!!!');
+        //         //get the available stock to check if its not less than zero
+        //         let  shoeStock = await db.one('SELECT in_stock FROM shoes WHERE id=$1', [id]);
+        //         console.log('Shoe stock :', shoeStock.in_stock);
+        //         //make sure the stock is not less than zero
+        //         if(shoeStock.in_stock < 1){
+        //             //Out of stock
+        //             console.log('Out of stock');
+        //             return 'Out of stock';
+        //         } else {
+        //             //update logic goes here...
+        //             console.log('Sell and update');
+        //             await db.none(`UPDATE shoes 
+        //                             SET in_stock = in_stock - 1
+        //                             WHERE id=$1`, [id]);
+        //             return 'Shoe stock updated successfully';
+        //         }
+        //     } else {
+        //         return 'No shoe with that ID was found';
+        //     }
+        // });
 
     }
 

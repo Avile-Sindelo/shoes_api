@@ -59,16 +59,22 @@
     <div id="shoes-div">
         {{#each shoes}}
         <div class="each-shoe-div">
-            <img src={{this.image_url}} class="image" alt="shoe image" />
-            <p class="shoe-detail">Brand : <span class="shoe-data">{{this.brand}}</span></p>
-            <p class="shoe-detail">Color : <span class="shoe-data">{{this.color}}</span></p>
-            <p class="shoe-detail">Size : <span class="shoe-data">{{this.size}}</span></p>
-            <p class="shoe-detail">Stock available : <span class="shoe-data">{{this.in_stock}}</span></p>
-            <p class="shoe-detail">Price : <span class="shoe-data">R{{this.price}}</span> </p>
-            <div id="likes-div">
-                <span class="fa-regular fa-thumbs-up"></span>
-            </div>
-            <button class="add-to-cart"> <i class="fa-solid fa-cart-plus" id="cart-icon"> </i> Add to Cart</button>
+            <form action="/api/shoes/sold/{{this.id}}" method="POST">
+                <img src={{this.image_url}} class="image" alt="shoe image" />
+                <p class="shoe-detail">Brand : <span class="shoe-data">{{this.brand}}</span></p>
+                <p class="shoe-detail">Color : <span class="shoe-data">{{this.color}}</span></p>
+                <p class="shoe-detail">Size : <span class="shoe-data">{{this.size}}</span></p>
+                <p class="shoe-detail">Stock available : <span class="shoe-data">{{this.in_stock}}</span></p>
+                <p class="shoe-detail">Price : <span class="shoe-data">R{{this.price}}</span> </p>
+                <p class="shoe-detail">ID : <span class="shoe-data">{{this.id}}</span> </p>
+                <div id="likes-div">
+                    <span class="fa-regular fa-thumbs-up"></span>
+                </div>
+                
+                <button type="submit" class="add-to-cart"> <i class="fa-solid fa-cart-plus" id="cart-icon"> </i> Add to Cart</button>
+                
+                {{!-- <button type="submit">Add to cart</button> --}}
+            </form>
         </div>
         {{/each}}
     </div>

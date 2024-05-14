@@ -32,6 +32,8 @@ const customerAPI = CustomerAPI(customerService);
 const shoesRoutes = Shoes(shoesService, shoesAPI);
 const basketRoutes = Basket(basketService, shoesService);
 
+let messages = {error: '', success: ''};
+
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');

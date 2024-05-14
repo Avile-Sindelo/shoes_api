@@ -67,17 +67,17 @@ export default function shoeRoutes(shoesService, shoesAPI){
     }
 
     async function sellShoe(req, res){
-        // try{
-        //     let shoeId = req.params.id;
-        //     console.log(id)
-        //     let result = await shoesService.updateSoldShoe(shoeId);
-        //     console.log(result);
+        try{
+            let shoeId = req.params.id;
+            console.log('Shoe ID', shoeId);
+            let result = await shoesService.updateSoldShoe(shoeId);
+            console.log('Result :', result);
+            res.redirect('/api/shoes');
 
-        // } catch(err){
-        //     console.error(err)
-        // }
+        } catch(err){
+            console.error(err)
+        }
 
-        console.log(req.params.id);
     }
 
     async function addShoe(req, res){
