@@ -1,4 +1,5 @@
 export default function shoeRoutes(shoesService, shoesAPI){
+    let messages = {error: '', success: ''};
     //Make all the calls to table SHOES & Render them to Home
     async function showAll(req, res){
         try{
@@ -7,7 +8,7 @@ export default function shoeRoutes(shoesService, shoesAPI){
             let shoeBrands = await shoesService.getAllBrandNames();
             let shoeSizes = await shoesService.getAllShoeSizes();
             
-            res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes});
+            res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages});
         } catch(err){
             console.error(err);
         }
