@@ -50,10 +50,9 @@
             <button type="submit" class="submit_btn">Submit both</button>
         </form>
     </div>
-
 </div>
 
-{{! Messages --}}
+{{!-- Messages --}}
 <p id="success_message">{{messages.success}}</p>
 <p id="error_message">{{messages.error}}</p>
 
@@ -85,4 +84,18 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 <script type="text/javascript">
+    let success = document.getElementById('success_message');
+    let error = document.getElementById('error_message');
+
+    if(success.textContent != ''){
+        setTimeout(function(){
+                success.textContent = ''; 
+        }, 4000);
+    }
+   
+    if(error.textContent != ''){
+        setTimeout(function(){
+                error.textContent = ''; 
+        }, 4000);
+    }
 </script>

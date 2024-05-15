@@ -72,7 +72,14 @@ export default function shoeRoutes(shoesService, shoesAPI){
             let shoeId = req.params.id;
             console.log('Shoe ID', shoeId);
             let result = await shoesService.updateSoldShoe(shoeId);
-            result == 'Out of stock' ? messages.error = result : messages.success = result;
+           
+            if(result == 'Out of stock!!!'){
+                messages.success = '';
+                messages.error = result;
+            } else {
+                messages.error = '';
+                messages.success = result;
+            }
             console.log('Result :', result);
             res.redirect('/api/shoes');
 

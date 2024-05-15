@@ -11,9 +11,4 @@ const data = axios.get('https://shoes-api-chdd.onrender.com/api/shoes')
 
     console.log('API data: ', data);
 
-const success = document.getElementById('success_message');
-if(success.value != ''){
-         setInterval(funtion(){
-                  success.textContent = ''; 
-         }, 3000);
-}
+
