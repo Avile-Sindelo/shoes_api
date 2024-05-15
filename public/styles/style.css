@@ -146,6 +146,20 @@
     color: beige;
 }
 
+#success_message{
+    color: green;
+}
+
+#error_message{
+    color: red;
+}
+
+#error_message, #success_message{
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    padding: 1em 2em;
+}
+
 @media screen AND (max-width: 631px){
     
     #shoes-div{
