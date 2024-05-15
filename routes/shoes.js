@@ -25,7 +25,9 @@ export default function shoeRoutes(shoesService, shoesAPI){
             if(results == `No shoes were returned for the brand ${verified}`){
                 res.redirect('/api/shoes');
             } else {
-                res.render('updateShoe', {shoes: results, brands, sizes})
+                messages.error = '';
+                messages.success = `Available ${brand} shoes below`;
+                res.render('updateShoe', {shoes: results, brands, sizes, messages})
             }
             
         } catch(err){
@@ -43,7 +45,9 @@ export default function shoeRoutes(shoesService, shoesAPI){
             if(sizeResults == `No shoes were returned for size ${size}`){
                 res.redirect('/api/shoes');
             } else {
-                res.render('updateShoe', {shoes: sizeResults, sizes, brands})
+                messages.error = '';
+                messages.success = `Available size ${size} shoes displayed below`;
+                res.render('updateShoe', {shoes: sizeResults, sizes, brands, messages})
             }
 
         } catch(err){
@@ -60,7 +64,16 @@ export default function shoeRoutes(shoesService, shoesAPI){
             let brands = await shoesService.getAllBrandNames();
     
             let results = await shoesService.getShoesSizeAndBrand(verified, size); 
-            res.render('updateShoe', {shoes: results, sizes, brands});
+            
+            if(results == `No shoes were found for ${brand} size ${size}`){
+                messages.success = '';
+                messages.error = results;
+            } else{
+                messages.error = '';
+                messages.success = `${verified} size ${size} shoes displayed below`;
+
+            }
+            res.render('updateShoe', {shoes: results, sizes, brands, messages});
 
         } catch(err){
             console.error(err);

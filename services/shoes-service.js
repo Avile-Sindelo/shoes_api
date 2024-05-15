@@ -16,7 +16,7 @@ export default function ShoesService(db){
 
     async function getShoesSizeAndBrand(brand, size){
         let sizeAndBrand = await db.manyOrNone('SELECT * FROM shoes WHERE brand=$1 AND size=$2', [brand, size]);
-        return sizeAndBrand.length == 0 ? `No shoes were returned for ${brand} size ${size}` : sizeAndBrand;
+        return sizeAndBrand.length == 0 ? `No shoes were found for ${brand} size ${size}` : sizeAndBrand;
     }
 
     async function updateSoldShoe(id){
