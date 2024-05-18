@@ -35,7 +35,7 @@ const customerAPI = CustomerAPI(customerService);
 //routes
 const shoesRoutes = Shoes(shoesService, shoesAPI);
 const basketRoutes = Basket(basketService, basketAPI);
-const customerRoutes = Customer(customerService, customerAPI);
+const customerRoutes = Customer(customerService, customerAPI, shoesService);
 
 
 

@@ -1,12 +1,16 @@
 import bcrypt from 'bcrypt';
 
-export default function customerRoutes(customerService, customerAPI){
+export default function customerRoutes(customerService, customerAPI, shoesService){
     const saltRounds = 10;
     let messages = {error: '', success: ''};
     
 
     async function register(req, res){
         try {
+            //clear the messages
+            messages.error = '';
+            messages.success = '';
+            
             let name = req.body.name;
             let email = req.body.email;
             let password = req.body.password;
@@ -36,6 +40,7 @@ export default function customerRoutes(customerService, customerAPI){
                         messages.error = '';
                         messages.success = 'Yay! Registration successful.';
                         console.log(messages);
+                        res.render('login', {messages});
                     }
                 });
             } else {
@@ -43,22 +48,25 @@ export default function customerRoutes(customerService, customerAPI){
                 messages.success = '';
                 messages.error = 'Passwords do not match.'
                 //redirect to the Register view
+                res.render('index', {messages});
             }
             } else {
-            console.log('Invalid name!');
-            messages.success = '';
-            messages.error = 'Oops! Invalid name.';
+                console.log('Invalid name!');
+                messages.success = '';
+                messages.error = 'Oops! Invalid name.';
+                res.render('index', {messages});
             }
         } catch (error) {
-            console.error(error);
+                console.error(error);
         }
-       
-        //redirect to login screen
-        res.redirect('/api/shoes');
     }
 
     async function login(req, res){
         try {
+
+            //clear the messages
+            messages.error = '';
+            messages.success = '';
             //Extract the email & pasword from the request object
             let email = req.body.email;
             let password = req.body.password;
@@ -67,17 +75,22 @@ export default function customerRoutes(customerService, customerAPI){
             console.log('Password :', password);
             
             //use the email to retrieve the hashed password from the DB
-            let hashedPassword = await customerService.getPassword(email);
-            console.log('Details :', hashedPassword);
+            let details = await customerService.getPassword(email);
+            console.log('Details :', details);
 
             //use BCRYPT to COMPARE the 2 passwords
-            bcrypt.compare(password, hashedPassword.password, function(err, isMatch){
+            bcrypt.compare(password, details.password, async function(err, isMatch){
                 if(err){
                     console.error(err);
                 } else if(isMatch){
                     console.log('Cheers! Passwords Match!!');
                     //render showAll
-                    // res.redirect('/api/shoes/')
+
+                    let shoeResults = await shoesService.getAllShoes();
+                    let shoeBrands = await shoesService.getAllBrandNames();
+                    let shoeSizes = await shoesService.getAllShoeSizes();
+                    
+                    res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages, details});
                 } else {
                     console.log('Whoops! Passwords do not match.');
                     //redirect to login

@@ -10,7 +10,7 @@ export default function shoeRoutes(shoesService, shoesAPI){
             let shoeBrands = await shoesService.getAllBrandNames();
             let shoeSizes = await shoesService.getAllShoeSizes();
             
-            res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages});
+            res.render('index', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages});
         } catch(err){
             console.error(err);
         }

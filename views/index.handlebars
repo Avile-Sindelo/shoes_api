@@ -1,26 +1,52 @@
 {{!-- Register layout goes here  --}}
-<form action="/register" method="POST">
+<div id="register-container">
+    {{!-- <h2 id="register-main-heading">Register with iNkwenkwezi</h2> --}}
+    <form action="/register" method="POST">
 
-    <div id="register-div">
-        <h3>Register</h3>
-        <div class="register-input-pair">
-            <label for="name" class="register-input-label">Name</label>
-            <input type="text" name="name" class="name-input" required>
-        </div>
-        <div class="register-input-pair">
-            <label for="email" class="register-input-label">Email</label>
-            <input type="email" name="email" class="name-input" required>
-        </div>
-        <div class="register-input-pair">
-            <label for="Password" class="register-input-label">Password</label>
-            <input type="password" name="password" class="name-input" required>
-        </div>
-        <div class="register-input-pair">
-            <label for="Confirm Password" class="register-input-label">Confirm Password</label>
-            <input type="password" name="confirm" class="name-input" required>
-        </div>
+        <p id="register-success-messsage">{{messages.success}}</p>
+        <p id="register-error-message">{{messages.error}}</p>
         
+        <div id="register-div">
+            <h3 id="register-header">Register</h3>
+            <div class="register-input-pair">
+                <label for="name" class="register-input-label">Name</label>
+                <input type="text" name="name" class="name-input" placeholder="e.g Lathitha" required>
+            </div>
+            <div class="register-input-pair">
+                <label for="email" class="register-input-label">Email</label>
+                <input type="email" name="email" class="name-input" placeholder="e.g lathitha@gmail.com" required>
+            </div>
+            <div class="register-input-pair">
+                <label for="Password" class="register-input-label">Password</label>
+                <input type="password" name="password" class="name-input" placeholder="*****" required>
+            </div>
+            <div class="register-input-pair">
+                <label for="Confirm Password" class="register-input-label" >Confirm Password</label>
+                <input type="password" name="confirm" class="name-input" placeholder="*****" required>
+            </div>
+            
 
-        <button type="submit">Register</button>
-    </div>
-</form>
+            <button type="submit" id="register-btn">Register</button>
+        </div>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    let error = document.getElementById('register-error-message');
+    let success = document.getElementById('register-success-message');
+
+    if(error.textContent != ''){
+        setTimeout(function(){
+            error.textContent = '';
+            success.textContent = '';
+        }, 4500);
+    }
+    
+    if(success.textContent != ''){
+        setTimeout(function(){
+            success.textContent = '';
+            error.textContent = '';
+        }, 4500);
+    }
+</script>
