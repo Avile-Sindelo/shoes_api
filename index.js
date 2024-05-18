@@ -4,10 +4,13 @@ import pgp from "pg-promise";
 import { engine } from 'express-handlebars';
 
 import Shoes from "./routes/shoes.js";
-import ShoesAPI from "./api/shoes-api.js";
 import Basket from "./routes/basket.js";
+import Customer from "./routes/customer.js";
+
+import ShoesAPI from "./api/shoes-api.js";
 import BasketAPI from "./api/basket-api.js";
 import CustomerAPI from "./api/customer-api.js";
+
 import ShoesService from "./services/shoes-service.js";
 import BasketService from './services/basket-service.js';
 import CustomerService from './services/customer-service.js';
@@ -28,9 +31,12 @@ const shoesAPI = ShoesAPI(shoesService);
 const basketAPI = BasketAPI(basketService); 
 const customerAPI = CustomerAPI(customerService); 
 
+
 //routes
 const shoesRoutes = Shoes(shoesService, shoesAPI);
-const basketRoutes = Basket(basketService, shoesService);
+const basketRoutes = Basket(basketService, basketAPI);
+const customerRoutes = Customer(customerService, customerAPI);
+
 
 
 
@@ -42,8 +48,15 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.get('/', shoesRoutes.showAll); 
+// temporary
+app.get('/', async function(req, res){
+  res.redirect('/addShoe');
+});
 
+app.post('/register', customerRoutes.register);
+app.post('/login', customerRoutes.login)
+
+// app.get('/', shoesRoutes.showIndex); //show the Register page 
 app.get('/api/shoes', shoesRoutes.showAll); //List all shoes in stock
 app.get('/api/shoes/brand/', shoesRoutes.showBrandShoes); //list all shoes for a specific brand
 app.get('/api/shoes/size/', shoesRoutes.showSizeShoes); //List all shoes for a given size

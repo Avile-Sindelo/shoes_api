@@ -161,6 +161,21 @@
     color: red;
 }
 
+#register-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.register-input-pair{
+    margin: .4em 0;
+}
+
+.register-input-label{
+    text-align: start;
+}
+
 
 @media screen AND (max-width: 631px){
     

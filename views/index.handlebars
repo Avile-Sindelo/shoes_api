@@ -1,1 +1,26 @@
-<h1> index.handlebars file - view engine</h1>
+{{!-- Register layout goes here  --}}
+<form action="/register" method="POST">
+
+    <div id="register-div">
+        <h3>Register</h3>
+        <div class="register-input-pair">
+            <label for="name" class="register-input-label">Name</label>
+            <input type="text" name="name" class="name-input" required>
+        </div>
+        <div class="register-input-pair">
+            <label for="email" class="register-input-label">Email</label>
+            <input type="email" name="email" class="name-input" required>
+        </div>
+        <div class="register-input-pair">
+            <label for="Password" class="register-input-label">Password</label>
+            <input type="password" name="password" class="name-input" required>
+        </div>
+        <div class="register-input-pair">
+            <label for="Confirm Password" class="register-input-label">Confirm Password</label>
+            <input type="password" name="confirm" class="name-input" required>
+        </div>
+        
+
+        <button type="submit">Register</button>
+    </div>
+</form>

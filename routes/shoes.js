@@ -1,4 +1,6 @@
+
 export default function shoeRoutes(shoesService, shoesAPI){
+    // const saltRounds = 10;
     let messages = {error: '', success: ''};
     //Make all the calls to table SHOES & Render them to Home
     async function showAll(req, res){
@@ -13,7 +15,8 @@ export default function shoeRoutes(shoesService, shoesAPI){
             console.error(err);
         }
     }
-    
+
+ 
     async function showBrandShoes(req, res){
         try{
             let brand = req.query.brandname;
@@ -80,6 +83,14 @@ export default function shoeRoutes(shoesService, shoesAPI){
         }
     }
 
+    async function showIndex(req, res){
+        try{
+            res.render('index')
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
     async function sellShoe(req, res){
         try{
             let shoeId = req.params.id;
@@ -130,6 +141,7 @@ export default function shoeRoutes(shoesService, shoesAPI){
         showBrandShoes,
         showSizeShoes,
         showBrandAndSize,
-        sellShoe
+        sellShoe,
+        showIndex
     }
 }
