@@ -9,8 +9,21 @@ export default function CustomerService(db){
         return pswd;
     }
 
+
+    async function emails(){
+        let results = await db.manyOrNone('select email from customers');
+        let emails = [];
+
+        results.forEach(element => {
+            emails.push(element.email);
+        });
+
+        return emails;
+    }
+
     return{
         addCustomer,
-        getPassword
+        getPassword,
+        emails
     }
 }

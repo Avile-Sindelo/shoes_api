@@ -1,18 +1,35 @@
-<form action="/login" method="POST">
-
-    <div id="login-container">
-        <h3>Login</h3>
-        <p>{{messages.success}}</p>
-        <p>{{messages.error}}</p>
+<div id="login-container">
+    <p id="login-success" >{{messages.success}}</p>
+    <p id="login-error">{{messages.error}}</p>
+    
+    <form action="/login" method="POST" id="login-form">
+        <h3 id="login-header">Login</h3>
         <div class="login-pair">
             <label for="email" class="login-label">Email</label>
-            <input type="email" name="email" class="login-input">
+            <input type="email" name="email" class="login-input" placeholder="e.g onele@gmail.com">
         </div>
 
         <div class="login-pair">
             <label for="password" class="login-label">Password</label>
-            <input type="password" name="password" class="login-input">
+            <input type="password" name="password" class="login-input" placeholder="e.g *****">
         </div>
-        <button type="submit">Submit</button>
-    </div>
-</form>
+        <button type="submit" id="login-btn">Submit</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    let success = document.querySelector('#login-success');
+    let error = document.querySelector('#login-error');
+
+    if(success.textContent != ''){
+        setTimeout(function(){
+            success.textContent = '';
+        }, 4500);
+    }
+    
+    if(error.textContent != ''){
+        setTimeout(function(){
+            error.textContent = '';
+        }, 4500);
+    }
+</script>

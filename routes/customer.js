@@ -4,13 +4,22 @@ export default function customerRoutes(customerService, customerAPI, shoesServic
     const saltRounds = 10;
     let messages = {error: '', success: ''};
     
+    async function duplicate(email){
+        let emails = await customerService.emails();
+
+        if(emails.includes(email)){
+            console.log('Duplicate!!!');
+        } else {
+            console.log('new customer');
+        };
+    }
 
     async function register(req, res){
         try {
             //clear the messages
             messages.error = '';
             messages.success = '';
-            
+
             let name = req.body.name;
             let email = req.body.email;
             let password = req.body.password;
@@ -29,6 +38,11 @@ export default function customerRoutes(customerService, customerAPI, shoesServic
             // make sure the passwords match 
             if(password === confirmPassword){
                 console.log('Passwords match!!');
+                //check for duplicacy
+                await duplicate(email);
+                console.log('Sent email: ', email);
+                // console.log('List of stored emails: ', emails);
+
                 //hash it & store in DB
                 bcrypt.hash(password, saltRounds, async function(err, hash){
                     if(err){

@@ -251,16 +251,101 @@
 #register-error-message, #register-success-message{
     text-align: center;
     margin: 4em 0 2em 15em;
+    font-family: 'Frijole', sans-serif;
+    font-weight: lighter;
+    letter-spacing: .5px;
+    word-spacing: 1px;
 }
 
-#register-error-message{
+#register-error-message, #login-error{
     color: crimson;
 }
 
-#register-success-message{
+#login-error, #login-success{
+    text-align: center;
+    margin: 0 0 1.5em 16em;
+    font-family: 'Ultra', serif;
+}
+
+#register-success-message, #login-success{
     color: green;
 }
 
+#login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url('../images/bg4.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-color: #FCFFE0;
+}
+
+#login-form{
+    /* border: 1px solid black; */
+    height: fit-content;
+    width: fit-content;
+    padding: 4em 2.5em;
+    margin: 0 0 14em 15em;
+    background-color: lightseagreen;
+    border-radius: 50%;
+    box-shadow: 10px 10px 10px grey;
+    /* clip-path: polygon(0 100%, 15% 15%, 100% 0, 89% 89%); */
+}
+
+.login-input{
+    margin: 0 0 .5em .5em;
+    border-radius: 20px;
+    padding: .5em 1.5em;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    box-shadow: 2px 2px 7px crimson;
+}
+
+.login-pair{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#login-header{
+    text-align: center;
+    font-family: 'Cinzel', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: .5px .5px 1px lightblue;
+}
+
+#login-btn{
+    margin: 5% 0 0 35%;
+    padding: .5em 2em;
+    border-radius: 5px;
+    background-color: lightgray;
+    border: none;
+    box-shadow: 1px 1px 2px #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+#login-btn:hover{
+    color: lightgray;
+    background-color: #333;
+    box-shadow: 1px 1px 2px lightgray;
+}
+
+.login-label{
+    padding: 0 .5em;
+    font-family: 'Radio Canada Big', sans-serif;
+    letter-spacing: 1px;
+    text-shadow: .5px .5px 1px beige;
+}
 
 @media screen AND (max-width: 631px){
     
