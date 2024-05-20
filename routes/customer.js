@@ -8,9 +8,11 @@ export default function customerRoutes(customerService, customerAPI, shoesServic
         let emails = await customerService.emails();
 
         if(emails.includes(email)){
-            console.log('Duplicate!!!');
+            // console.log('Duplicate!!!');
+            return true;
         } else {
-            console.log('new customer');
+            // console.log('new customer');
+            return false;
         };
     }
 
@@ -39,24 +41,34 @@ export default function customerRoutes(customerService, customerAPI, shoesServic
             if(password === confirmPassword){
                 console.log('Passwords match!!');
                 //check for duplicacy
-                await duplicate(email);
+                console.log('Duplicate? :', await duplicate(email));
                 console.log('Sent email: ', email);
                 // console.log('List of stored emails: ', emails);
 
-                //hash it & store in DB
-                bcrypt.hash(password, saltRounds, async function(err, hash){
-                    if(err){
-                        console.error(err);
-                    } else {
-                        console.log(hash);
-                        //store the details in the database
-                        await customerService.addCustomer(name, email, hash);
-                        messages.error = '';
-                        messages.success = 'Yay! Registration successful.';
-                        console.log(messages);
-                        res.render('login', {messages});
-                    }
-                });
+                if(await duplicate(email)){
+                    //duplicate
+                    messages.error = 'Customer already exists. Please login below.';
+                    messages.success = ''; 
+                    res.render('login', {messages});
+                } else {
+                    //not a duplicate
+
+                    //hash it & store in DB
+                    bcrypt.hash(password, saltRounds, async function(err, hash){
+                        if(err){
+                            console.error(err);
+                        } else {
+                            console.log(hash);
+                            //store the details in the database
+                            await customerService.addCustomer(name, email, hash);
+                            messages.error = '';
+                            messages.success = 'Yay! Registration successful.';
+                            console.log(messages);
+                            res.render('login', {messages});
+                        }
+                    });
+
+                }
             } else {
                 console.log('Passwords do not match!!');
                 messages.success = '';
@@ -107,8 +119,10 @@ export default function customerRoutes(customerService, customerAPI, shoesServic
                     res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages, details});
                 } else {
                     console.log('Whoops! Passwords do not match.');
-                    //redirect to login
-                    res.redirect('/login');
+                    messages.error = 'Whoops! Incorrect password. Try again...';
+                    messages.success = '';
+                    // login screen
+                    res.render('login', {messages});
                 }
             });
         } catch (error) {
