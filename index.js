@@ -55,6 +55,9 @@ app.get('/', async function(req, res){
 
 app.post('/register', customerRoutes.register);
 app.post('/login', customerRoutes.login)
+app.get('/register', async function(req, res){
+    res.render('index');
+});
 
 // app.get('/', shoesRoutes.showIndex); //show the Register page 
 app.get('/api/shoes', shoesRoutes.showAll); //List all shoes in stock

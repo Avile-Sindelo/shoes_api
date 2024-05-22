@@ -295,6 +295,29 @@
     /* clip-path: polygon(0 100%, 15% 15%, 100% 0, 89% 89%); */
 }
 
+#login-to-register-form{
+    margin: 0 0 3em 14em;
+    font-family: 'Radio Canada Big', sans-serif;
+    letter-spacing: .5px;
+    color: lightslategray;
+}
+
+#login-to-register-link{
+    background-color: transparent;
+    color: blue;
+    border: none;
+    font-family: 'Radio Canada Big', sans-serif;
+    text-decoration: underline;
+    letter-spacing: 1.5px;
+    font-size: 90%;
+}
+
+#login-to-register-link:hover{
+    cursor: pointer;
+    color: #FF2400;
+    font-size: 100%;
+}
+
 .login-input{
     margin: 0 0 .5em .5em;
     border-radius: 20px;
@@ -324,10 +347,10 @@
 #login-btn{
     margin: 5% 0 0 35%;
     padding: .5em 2em;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: lightgray;
     border: none;
-    box-shadow: 1px 1px 2px #333;
+    box-shadow: 1px 1px 5px #333;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     letter-spacing: 1.5px;
@@ -337,7 +360,7 @@
 #login-btn:hover{
     color: lightgray;
     background-color: #333;
-    box-shadow: 1px 1px 2px lightgray;
+    box-shadow: 1px 1px 5px lightgray;
 }
 
 .login-label{

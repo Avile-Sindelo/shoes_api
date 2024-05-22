@@ -6,14 +6,20 @@
         <h3 id="login-header">Login</h3>
         <div class="login-pair">
             <label for="email" class="login-label">Email</label>
-            <input type="email" name="email" class="login-input" placeholder="e.g onele@gmail.com">
+            <input type="email" name="email" class="login-input" placeholder="e.g onele@gmail.com" required>
         </div>
 
         <div class="login-pair">
             <label for="password" class="login-label">Password</label>
-            <input type="password" name="password" class="login-input" placeholder="e.g *****">
+            <input type="password" name="password" class="login-input" placeholder="e.g *****" required>
         </div>
         <button type="submit" id="login-btn">Submit</button>
+    </form>
+
+    <form action="/register" method="GET" id="login-to-register-form">
+        <p id="not-registered"> Not registered? </p>
+
+        <button type="submit" id="login-to-register-link">Register</button>
     </form>
 </div>
 
