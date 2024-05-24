@@ -439,4 +439,8 @@
     #login-success, #login-error{
         padding: 0 15em 0 0;
     }
+
+    .login-input{
+        box-shadow: #3B3C36;
+    }
 }
