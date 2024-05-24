@@ -400,4 +400,43 @@
     .filter-select{
         margin: .8em .6em;
     }
+
+    #register-container{
+        width: 100vw;
+        height: 100vh;
+        background-repeat: repeat;
+    }
+
+    #register-div{
+        margin-left: .2em;
+        background-color: transparent;
+    }
+
+    #login-form{
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+        flex-direction: column;
+        margin: 0 15em 5em 14em;
+        border-radius: 20px;
+        width: fit-content;
+        height:120vh;
+        background-color: transparent;
+        border: 1px solid lightslategray;
+        
+    }
+
+    #login-container{
+        background-repeat: repeat;
+        padding: 3em 15em;
+        height: 100%;
+    }
+
+    #login-to-register-form{
+        margin: 0 3em 0 0;
+    }
+
+    #login-success, #login-error{
+        padding: 10em 15em 0 0;
+    }
 }
