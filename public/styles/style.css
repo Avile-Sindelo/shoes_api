@@ -405,10 +405,11 @@
         width: 100vw;
         height: 100vh;
         background-repeat: repeat;
+        padding: 0 5em;
     }
 
     #register-div{
-        margin: 0 10em;
+        margin-left: .2em;
         background-color: transparent;
     }
 
