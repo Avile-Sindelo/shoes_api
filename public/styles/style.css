@@ -245,7 +245,7 @@
 #register-header{
     font-family: 'Playfair Display', sans-serif;
     letter-spacing: 1px;
-    text-shadow: .5px .5px 1px #39A7FF;
+    text-shadow: .5px .5px 1px #fff;
 }
 
 #register-error-message, #register-success-message{
