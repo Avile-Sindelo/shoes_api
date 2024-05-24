@@ -5,7 +5,7 @@ export default function CustomerService(db){
     }
 
     async function getPassword(email){
-        let pswd = await db.one('SELECT * FROM customers WHERE email = $1', [email]);
+        let pswd = await db.oneOrNone('SELECT * FROM customers WHERE email = $1', [email]);
         return pswd;
     }
 

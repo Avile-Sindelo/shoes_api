@@ -103,28 +103,35 @@ export default function customerRoutes(customerService, customerAPI, shoesServic
             //use the email to retrieve the hashed password from the DB
             let details = await customerService.getPassword(email);
             console.log('Details :', details);
+            if(details == null){
+                messages.success = '';
+                messages.error = 'Customer does not exist. Register below!';
+                res.render('login', {messages});
+            } else {
+                //use BCRYPT to COMPARE the 2 passwords
+                bcrypt.compare(password, details.password, async function(err, isMatch){
+                    if(err){
+                        console.error(err);
+                    } else if(isMatch){
+                        console.log('Cheers! Passwords Match!!');
+                        //render showAll
+    
+                        let shoeResults = await shoesService.getAllShoes();
+                        let shoeBrands = await shoesService.getAllBrandNames();
+                        let shoeSizes = await shoesService.getAllShoeSizes();
+                        
+                        res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages, details});
+                    } else {
+                        console.log('Whoops! Passwords do not match.');
+                        messages.error = 'Whoops! Incorrect password. Try again...';
+                        messages.success = '';
+                        // login screen
+                        res.render('login', {messages});
+                    }
+                });
 
-            //use BCRYPT to COMPARE the 2 passwords
-            bcrypt.compare(password, details.password, async function(err, isMatch){
-                if(err){
-                    console.error(err);
-                } else if(isMatch){
-                    console.log('Cheers! Passwords Match!!');
-                    //render showAll
+            }
 
-                    let shoeResults = await shoesService.getAllShoes();
-                    let shoeBrands = await shoesService.getAllBrandNames();
-                    let shoeSizes = await shoesService.getAllShoeSizes();
-                    
-                    res.render('updateShoe', {shoes: shoeResults, brands: shoeBrands, sizes: shoeSizes, messages, details});
-                } else {
-                    console.log('Whoops! Passwords do not match.');
-                    messages.error = 'Whoops! Incorrect password. Try again...';
-                    messages.success = '';
-                    // login screen
-                    res.render('login', {messages});
-                }
-            });
         } catch (error) {
             console.error(error)
         }
