@@ -437,6 +437,6 @@
     }
 
     #login-success, #login-error{
-        padding: 5em 15em 0 0;
+        padding: 0 15em 0 0;
     }
 }
